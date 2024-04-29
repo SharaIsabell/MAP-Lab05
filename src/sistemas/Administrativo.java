@@ -45,5 +45,5 @@ public class Administrativo {
 	protected static ArrayList<Entrevista> getEntrevistasAgendadas() {
 		return entrevistasAgendadas;
 	}
-
+	
 }

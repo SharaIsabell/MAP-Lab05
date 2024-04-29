@@ -7,8 +7,8 @@ import sistemas.entities.BalancoConta;
 import sistemas.entities.FolhaPagamento;
 
 public class Financeiro {
-	private static BalancoConta balancoContas;
-	private static ArrayList<FolhaPagamento> folhasPagamento;
+	private static BalancoConta balancoContas = new BalancoConta();
+	private static ArrayList<FolhaPagamento> folhasPagamento = new ArrayList<FolhaPagamento>();
 	
 	protected static void adicionarFolhaPagamento(LocalDate data, double ganhoPorHora, int horasTrabalhadas, String nome) {
 		FolhaPagamento folhaPag = new FolhaPagamento(data, ganhoPorHora, horasTrabalhadas, nome);
@@ -22,6 +22,10 @@ public class Financeiro {
 		}
 		
 		return total;
+	}
+	
+	protected static void criarBalancoContas() {
+		balancoContas = new BalancoConta();
 	}
 
 	protected static BalancoConta getBalancoContas() {

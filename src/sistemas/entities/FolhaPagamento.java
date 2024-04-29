@@ -16,7 +16,7 @@ public class FolhaPagamento {
 	}
 	
 	public double calcularSalario() {
-		return ganhoPorHora * horasTrabalhadas;
+		return (ganhoPorHora * horasTrabalhadas) * 30;
 	}
 
 	//Getters

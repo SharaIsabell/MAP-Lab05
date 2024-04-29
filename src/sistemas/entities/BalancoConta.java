@@ -7,7 +7,7 @@ public class BalancoConta {
 	private HashMap<String, Double> passivos;
 	private double patrimonioLiquido;
 	
-	protected BalancoConta() {
+	public BalancoConta() {
 		ativos = new HashMap<>();
 		passivos = new HashMap<>();
 	}
@@ -31,7 +31,6 @@ public class BalancoConta {
 		}
 		
 		patrimonioLiquido = totalAtivo - totalPassivo;
-		
 	}
 	
 	//Getters
