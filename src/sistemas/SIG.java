@@ -4,23 +4,27 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 
 import sistemas.entities.Aluno;
 import sistemas.entities.Compromisso;
 import sistemas.entities.EntidadeAcademica;
 import sistemas.entities.Entrevista;
+import sistemas.entities.PedidoCompra;
 import sistemas.entities.Professor;
 import sistemas.entities.Reuniao;
+import sistemas.entities.Sala;
 
 public class SIG {
 	public static final DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 	public static final DateTimeFormatter formatoDataSemHora = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
 	// Administrativo
-	public static Reuniao marcarReuniãoAdministrativo(String horario,String local, ArrayList<String> participantes) {
+	public static Reuniao marcarReuniaoAdministrativo(String horario,String local, ArrayList<String> participantes) {
 	    LocalDateTime horarioFormatado = LocalDateTime.parse(horario, formatoData);
 	    
-		return Administrativo.marcarReunião(horarioFormatado, local, participantes);
+		return Administrativo.marcarReuniao(horarioFormatado, local, participantes);
 	}
 	
 	public static Entrevista marcarEntrevistaAdministrativo(String horario,String local, ArrayList<String> participantes) {
@@ -69,6 +73,36 @@ public class SIG {
 		for (double nota : aluno.getNotas()) {
 			System.out.println(nota);
 		}
+	}
+	
+	// Almoxarifado
+	public static void adicionarNoEstoqueAlmoxarifado(String material, int quantidade) {
+		Almoxarifado.adicionarNoEstoque(material, quantidade);
+	}
+	
+	public static int verificarEstoqueAlmoxarifado(String material) {
+		return Almoxarifado.verificarEstoque(material);
+	}
+	
+	public static void registrarNovoPedidoAlmoxarifado(int numeroPedido, LocalDate data) {
+		Almoxarifado.registrarNovoPedido(numeroPedido, data);
+	}
+	
+	public static ArrayList<PedidoCompra> verificarListaPedidosAlmoxarifado(){
+		return Almoxarifado.getPedidosCompra();
+	}
+	
+	// Infraestura
+	public static Sala adicionarSalaInfraestrutura(String nome, int capacidade) {
+		return Infraestrutura.adicionarSala(nome, capacidade);
+	}
+	
+	public static void reservarSalaInfraestrutura(Sala sala, LocalDate data) {
+		Infraestrutura.reservarSala(sala, data);
+	}
+	
+	public static HashMap<Sala, Set<LocalDate>> verificarSalasReservadasInfraestrutura(){
+		return Infraestrutura.getSalasReservadas();
 	}
 	
 }

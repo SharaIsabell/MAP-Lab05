@@ -9,16 +9,16 @@ import java.util.Set;
 import sistemas.entities.Sala;
 
 public class Infraestrutura {
-	private static ArrayList<Sala> salas;
-	private static HashMap<Sala, Set<LocalDate>> salasReservadas;
+	private static ArrayList<Sala> salas = new ArrayList<Sala>();
+	private static HashMap<Sala, Set<LocalDate>> salasReservadas = new HashMap<Sala, Set<LocalDate>>();
 	
-	protected static Sala adicionarSala(String nome, int capacidade) {
+	public static Sala adicionarSala(String nome, int capacidade) {
 		Sala sala = new Sala(nome, capacidade);
 		salas.add(sala);
 		return sala;
 	}
 	
-	protected static void reservarSala(Sala sala, LocalDate data) {
+	public static void reservarSala(Sala sala, LocalDate data) {
 		if(!salasReservadas.containsKey(sala)) {
 			salasReservadas.put(sala, new HashSet<>());
 		}

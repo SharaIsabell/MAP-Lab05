@@ -7,32 +7,32 @@ import java.util.HashMap;
 import sistemas.entities.PedidoCompra;
 
 public class Almoxarifado {
-	private static HashMap<String, Integer> estoque;
-	private static ArrayList<PedidoCompra> pedidosCompra;
+	private static HashMap<String, Integer> estoque = new HashMap<String, Integer>();
+	private static ArrayList<PedidoCompra> pedidosCompra = new ArrayList<PedidoCompra>();
 	
-	protected static void adicionarNoEstoque(String material, int quantidade) {
+	public static void adicionarNoEstoque(String material, int quantidade) {
 		if (estoque.containsKey(material)) {
 			estoque.put(material, estoque.get(material) + quantidade); 
 		}
 		estoque.put(material, quantidade);
 	}
 	
-	protected static int verificarEstoque(String material) {
+	public static int verificarEstoque(String material) {
 		return estoque.getOrDefault(material, 0);
 	}
 	
-	protected static void registrarNovoPedido(int numeroPedido, LocalDate data){
+	public static void registrarNovoPedido(int numeroPedido, LocalDate data){
 		PedidoCompra pedido = new PedidoCompra(numeroPedido, data);
 		pedidosCompra.add(pedido);
 	}
 	
 	//Getters
 
-	protected static HashMap<String, Integer> getEstoque() {
+	public static HashMap<String, Integer> getEstoque() {
 		return estoque;
 	}
 
-	protected static ArrayList<PedidoCompra> getPedidosCompra() {
+	public static ArrayList<PedidoCompra> getPedidosCompra() {
 		return pedidosCompra;
 	}
 }

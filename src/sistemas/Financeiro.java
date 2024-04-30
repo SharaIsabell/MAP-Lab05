@@ -10,12 +10,12 @@ public class Financeiro {
 	private static BalancoConta balancoContas = new BalancoConta();
 	private static ArrayList<FolhaPagamento> folhasPagamento = new ArrayList<FolhaPagamento>();
 	
-	protected static void adicionarFolhaPagamento(LocalDate data, double ganhoPorHora, int horasTrabalhadas, String nome) {
+	public static void adicionarFolhaPagamento(LocalDate data, double ganhoPorHora, int horasTrabalhadas, String nome) {
 		FolhaPagamento folhaPag = new FolhaPagamento(data, ganhoPorHora, horasTrabalhadas, nome);
 		folhasPagamento.add(folhaPag);
 	}
 	
-	protected static double calcularTotalSalarios() {
+	public static double calcularTotalSalarios() {
 		double total = 0;
 		for(FolhaPagamento folhaPag : folhasPagamento) {
 			total += folhaPag.calcularSalario();
@@ -24,15 +24,15 @@ public class Financeiro {
 		return total;
 	}
 	
-	protected static void criarBalancoContas() {
+	public static void criarBalancoContas() {
 		balancoContas = new BalancoConta();
 	}
 
-	protected static BalancoConta getBalancoContas() {
+	public static BalancoConta getBalancoContas() {
 		return balancoContas;
 	}
 
-	protected static ArrayList<FolhaPagamento> getFolhasPagamento() {
+	public static ArrayList<FolhaPagamento> getFolhasPagamento() {
 		return folhasPagamento;
 	}
 

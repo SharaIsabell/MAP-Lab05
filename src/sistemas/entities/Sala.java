@@ -19,4 +19,9 @@ public class Sala {
 		return capacidade;
 	}
 
+	@Override
+	public String toString() {
+		return "Sala [nome = " + nome + ", capacidade = " + capacidade + "]";
+	}
+
 }
